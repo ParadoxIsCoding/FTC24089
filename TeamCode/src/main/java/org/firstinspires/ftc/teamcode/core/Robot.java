@@ -57,6 +57,8 @@ public class Robot {
             public double rightBack = 0.0;
             public double leftIntake = 0.0;
             public double rightIntake = 0.0;
+            public double leftSlide = 0.0;
+            public double rightSlide = 0.0;
         }
 
         private void componentDrive(double forwardPower, double rightPower) {
@@ -65,10 +67,10 @@ public class Robot {
             double movementMultiplier = 1.0;
 //            double denominator = Math.abs(forwardPower) + Math.abs(rightPower);
             powerVec2.fromComponent(rightPower, forwardPower);
-            MotorPowers.leftFront = ((rightPower * -1 + forwardPower) * movementMultiplier + r);
-            MotorPowers.rightFront = ((rightPower * -1 - forwardPower) * movementMultiplier - r);
+            MotorPowers.leftFront = ((rightPower * -1 + forwardPower) * movementMultiplier - r);
+            MotorPowers.rightFront = ((rightPower * -1 + forwardPower) * movementMultiplier + r);
             MotorPowers.leftBack = ((rightPower * -1 - forwardPower) * movementMultiplier + r);
-            MotorPowers.rightBack = ((rightPower *-1 + forwardPower) * movementMultiplier - r);
+            MotorPowers.rightBack = ((rightPower * -1 - forwardPower) * movementMultiplier - r);
         }
 
         private void driveInDirection(double direction, double power, boolean fieldCentric) {
@@ -92,7 +94,7 @@ public class Robot {
         // TODO: check later
         public void calculateMovement(GamepadEx gamepad) {
 
-            telemetry.addData("TouchState", sensors.testTouchSensor.isPressed());
+            telemetry.addData("MagState", sensors.testMagSensor.isPressed());
 
             double mx = controller.movement_x(gamepad);
             double my = controller.movement_y(gamepad);
@@ -109,16 +111,8 @@ public class Robot {
             if (Controls.driverOverride.isPressed(gamepad)) {
                 return;
             }
-
-            Vec2 controllerVec2 = new Vec2();
-            controllerVec2.fromComponent(mx, my);
-            MotorPowers.leftIntake = controller.right_trigger(gamepad);
-            MotorPowers.rightIntake = controller.right_trigger(gamepad);
-            driveInDirection(
-                    controllerVec2.direction,
-                    RobotParameters.Movement.speed * controllerVec2.magnitude,
-                    false);//Controls.Button.A.isPressed(gamepad));
-            //componentDrive(mx * 0.7, my * 0.7);
+            MotorPowers.rightSlide = controller.left_trigger(gamepad) - controller.right_trigger(gamepad);
+            componentDrive(my * 0.7, mx * 0.7);
         }
 
         public void setMotorPowers() {
@@ -128,6 +122,8 @@ public class Robot {
             motors.rightBack.set(MotorPowers.rightBack);
             motors.leftIntake.set(MotorPowers.leftIntake);
             motors.rightIntake.set(MotorPowers.rightIntake);
+            motors.leftSlide.set(MotorPowers.leftSlide);
+            motors.rightSlide.set(MotorPowers.rightSlide);
         }
 
         public void drive(GamepadEx gamepad) {
