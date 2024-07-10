@@ -112,6 +112,7 @@ public class Robot {
                 return;
             }
             MotorPowers.rightSlide = controller.left_trigger(gamepad) - controller.right_trigger(gamepad);
+            MotorPowers.leftSlide = controller.left_trigger(gamepad) - controller.right_trigger(gamepad);
             componentDrive(my * 0.7, mx * 0.7);
         }
 

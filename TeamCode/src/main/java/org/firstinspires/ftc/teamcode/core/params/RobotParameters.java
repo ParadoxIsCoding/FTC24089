@@ -26,7 +26,7 @@ public class RobotParameters {
             public static final boolean rightBack = false;
             public static final boolean leftIntake = true;
             public static final boolean rightIntake = false;
-            public static final boolean leftSlide = false;
+            public static final boolean leftSlide = true;
             public static final boolean rightSlide = false;
         }
     }
