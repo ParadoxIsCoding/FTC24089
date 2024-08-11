@@ -10,4 +10,4 @@ We are a small Australian team. \
 | Harrison | [@hchap1](https://github.com/hchap1) | Programming lead |
 | Taha | [@paradoxiscoding](https://github.com/paradoxiscoding) | Team coordinator, build team |
 | Rowan | [@SolemenF](https://github.com/solemenf) | Outreach & logistics |
-| Jett | _ | CAD / 3D printing |
+| Jett | _ | CAD / 3D Printing |
