@@ -13,4 +13,4 @@ We are a small Australian team based out in the Sunshine Coast. \
 | Jett |   | CAD, 3D printing, assembly |
 
 ## Previous versions
-[Regionals](https://github.com/IronLionsFTC/FTC24089/tree/a0c195771a78885c46364d722805ee918ece5e54)
+[Regionals](https://github.com/IronLionsFTC/FTC24089/tree/a0c195771a78885c46364d722805ee918ece5e54) (03/11/2024)
